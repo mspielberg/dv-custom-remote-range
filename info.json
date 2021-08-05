@@ -1,0 +1,10 @@
+{
+  "Id": "CustomRemoteRange",
+  "DisplayName": "Custom Remote Range",
+  "Author": "Zeibach",
+  "Version": "1.0.0",
+  "AssemblyName": "CustomRemoteRange.dll",
+  "EntryMethod": "DvMod.CustomRemoteRange.Main.Load",
+  "HomePage": "https://www.nexusmods.com/derailvalley/mods/???",
+  "Repository": "https://raw.githubusercontent.com/mspielberg/dv-custom-remote-range/master/resources/repository.json"
+}
