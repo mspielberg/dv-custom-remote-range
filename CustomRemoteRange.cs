@@ -1,6 +1,5 @@
 using HarmonyLib;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace DvMod.CustomRemoteRange
 {
@@ -17,11 +16,23 @@ namespace DvMod.CustomRemoteRange
                 foreach (var inst in instructions)
                 {
                     if (inst.LoadsConstant(LocomotiveRemoteController.MAX_REGULAR_SIGNAL_DISTANCE))
-                        yield return CodeInstruction.Call(typeof(UpdateSignalPatch), nameof(UpdateSignalPatch.GetNormalRange));
+                    {
+                        yield return CodeInstruction
+                           .Call(typeof(UpdateSignalPatch), nameof(UpdateSignalPatch.GetNormalRange))
+                           .MoveBlocksFrom(inst)
+                           .MoveLabelsFrom(inst);
+                    }
                     else if (inst.LoadsConstant(LocomotiveRemoteController.MAX_EXTENDED_SIGNAL_DISTANCE))
-                        yield return CodeInstruction.Call(typeof(UpdateSignalPatch), nameof(UpdateSignalPatch.GetExtendedRange));
+                    {
+                        yield return CodeInstruction
+                           .Call(typeof(UpdateSignalPatch), nameof(UpdateSignalPatch.GetExtendedRange))
+                           .MoveBlocksFrom(inst)
+                           .MoveLabelsFrom(inst);
+                    }
                     else
+                    {
                         yield return inst;
+                    }
                 }
             }
         }
