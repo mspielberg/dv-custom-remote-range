@@ -1,5 +1,4 @@
 using HarmonyLib;
-using System;
 using UnityModManagerNet;
 
 namespace DvMod.CustomRemoteRange
@@ -34,12 +33,12 @@ namespace DvMod.CustomRemoteRange
 
         private static void OnGUI(UnityModManager.ModEntry modEntry)
         {
-            settings.Draw();
+            settings.Draw(modEntry);
         }
 
         private static void OnSaveGUI(UnityModManager.ModEntry modEntry)
         {
-            settings.Save(modEntry);
+            Settings.Save(settings, modEntry);
         }
 
         private static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
@@ -55,18 +54,6 @@ namespace DvMod.CustomRemoteRange
                 harmony.UnpatchAll(modEntry.Info.Id);
             }
             return true;
-        }
-
-        public static void DebugLog(TrainCar car, Func<string> message)
-        {
-            if (car == PlayerManager.Car)
-                DebugLog(message);
-        }
-
-        public static void DebugLog(Func<string> message)
-        {
-            if (settings.enableLogging)
-                mod?.Logger.Log(message());
         }
     }
 }
