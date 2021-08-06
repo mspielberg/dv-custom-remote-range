@@ -5,6 +5,6 @@
   "Version": "1.0.0",
   "AssemblyName": "CustomRemoteRange.dll",
   "EntryMethod": "DvMod.CustomRemoteRange.Main.Load",
-  "HomePage": "https://www.nexusmods.com/derailvalley/mods/???",
+  "HomePage": "https://www.nexusmods.com/derailvalley/mods/346",
   "Repository": "https://raw.githubusercontent.com/mspielberg/dv-custom-remote-range/master/resources/repository.json"
 }
